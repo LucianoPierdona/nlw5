@@ -6,6 +6,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { v4 as uuid } from 'uuid';
 
 @Entity('settings')
 export class Setting {
@@ -23,4 +24,10 @@ export class Setting {
 
   @CreateDateColumn()
   updated_ad: Date;
+
+  constructor() {
+    if (!this.id) {
+      this.id = uuid();
+    }
+  }
 }
