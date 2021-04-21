@@ -9,8 +9,12 @@ export class SettingsController {
 
     const settingsService = new SettingsService();
 
-    const settings = await settingsService.create({ chat, username });
+    try {
+      const settings = await settingsService.create({ chat, username });
 
-    return res.json(settings);
+      return res.json(settings);
+    } catch (err) {
+      return res.status(400).json({ message: err.message });
+    }
   }
 }
