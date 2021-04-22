@@ -15,4 +15,14 @@ export class MessageController {
       return res.status(400).json({ message: err.message });
     }
   }
+
+  async getMessagesByUser(req: Request, res: Response) {
+    const { user_id } = req.params;
+
+    const messageService = new MessageService();
+
+    const list = messageService.getMessagesByUser(user_id);
+
+    return res.status(200).json(list);
+  }
 }
