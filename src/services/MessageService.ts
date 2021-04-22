@@ -3,7 +3,7 @@ import { MessageRepository } from '../repositories/MessageRepository';
 import { UserRepository } from '../repositories/UserRepository';
 
 interface ICreateMessage {
-  admin_id: string;
+  admin_id?: string;
   text: string;
   user_id: string;
 }
