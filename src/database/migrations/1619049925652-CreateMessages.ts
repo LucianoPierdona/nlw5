@@ -14,6 +14,7 @@ export class CreateMessages1619049925652 implements MigrationInterface {
           {
             name: 'admin_id',
             type: 'uuid',
+            isNullable: true,
           },
           {
             name: 'user_id',
@@ -34,11 +35,21 @@ export class CreateMessages1619049925652 implements MigrationInterface {
             default: 'now()',
           },
         ],
+        foreignKeys: [
+          {
+            name: 'FK_user',
+            referencedTableName: 'users',
+            referencedColumnNames: ['id'],
+            columnNames: ['user_id'],
+            onDelete: 'SET NULL',
+            onUpdate: 'SET NULL',
+          },
+        ],
       })
     );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('users');
+    await queryRunner.dropTable('messages');
   }
 }
