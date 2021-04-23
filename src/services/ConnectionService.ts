@@ -49,4 +49,16 @@ export class ConnectionService {
 
     return connections;
   }
+
+  async findBySocket(socket_id: string) {
+    const connection = await this.connectionRepository.findOne({
+      socket_id,
+    });
+
+    return connection;
+  }
+
+  async updateAdmin(user_id: string, admin_id: string) {
+    return await this.connectionRepository.update({ user_id }, { admin_id });
+  }
 }
