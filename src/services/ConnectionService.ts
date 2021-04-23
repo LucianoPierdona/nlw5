@@ -38,4 +38,14 @@ export class ConnectionService {
 
     return connection;
   }
+
+  async findAllWithoutAdmin(user_id: string) {
+    const connections = await this.connectionRepository.find({
+      where: {
+        admin_id: null,
+      },
+    });
+
+    return connections;
+  }
 }
