@@ -42,4 +42,8 @@ export class SettingsService {
 
     return settings;
   }
+
+  async update(username: string, chat: boolean) {
+    return await this.settingsRepository.update({ username }, { chat });
+  }
 }
