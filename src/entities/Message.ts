@@ -16,7 +16,7 @@ export class Message {
   @PrimaryColumn('uuid')
   id: string;
 
-  @Column('uuid')
+  @Column()
   admin_id: string;
 
   @ManyToOne((_type) => User)
